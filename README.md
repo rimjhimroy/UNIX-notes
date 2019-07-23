@@ -42,6 +42,10 @@ sudo mount -t cifs -o username=choudhury //130.92.155.10/EcoGen /media/EcoGen
 ### Change timestamp:
 `find . -exec touch {} \;`
 
+### Find files
+`find / -name '*libfontconfig1*'`
+Or use locate  
+
 ### Copy files
 use screen, execute command and then Ctrl a+d to detatch
 ```
