@@ -101,3 +101,10 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycer
 conda install ipyparallel
 ipcluster nbextension enable --user
 ```
+
+### In slurm, set alias for useful sinfo, squeue and srun commands
+```
+alias si="sinfo --Node --format \"%N %P %g %C %O %T %E %H %m %e %d %l\""
+alias sq="squeue --format \"%.18i %.9P %.8j %.8u %.2t %.10M %C %m %L %.6D %Q %R\""
+alias sr="srun --pty /bin/bash"
+```
