@@ -46,6 +46,11 @@ sudo mount -t cifs -o username=choudhury //130.92.155.10/EcoGen /media/EcoGen
 `find / -name '*libfontconfig1*'`
 Or use locate  
 
+### Find .gz files containing a pattern
+```
+find . -name "*.gz" -print | parallel -q zgrep -e "\(text1\|text2\).*Exception"
+```
+
 ### Copy files
 use screen, execute command and then Ctrl a+d to detatch
 ```
