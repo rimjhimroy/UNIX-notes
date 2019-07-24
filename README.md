@@ -60,7 +60,7 @@ sbatch -J find3 -c 20 --wrap "find . -name \*.gz  | $HOME/parallel-20190722/usr/
 use screen, execute command and then Ctrl a+d to detatch
 ```
 screen -rd #to reattach
-rsync -avz C201SC18110128/C101HW18110129_TR/raw_data/W22* rchoudhury@binfservms01.unibe.ch:/data/users/rchoudhury/.
+rsync -avz --stats --safe-links C201SC18110128/C101HW18110129_TR/raw_data/W22* rchoudhury@binfservms01.unibe.ch:/data/users/rchoudhury/.
 ```
 
 ### md5sum
