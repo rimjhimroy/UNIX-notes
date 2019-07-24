@@ -47,8 +47,10 @@ sudo mount -t cifs -o username=choudhury //130.92.155.10/EcoGen /media/EcoGen
 Or use locate  
 
 ### Find .gz files containing a pattern
+`find . -name \*.gz -print | $HOME/parallel-20190722/usr/local/bin/parallel -q zgrep -e "A00574:80:H7TYWDRXX:2:2101:1108:1000"`
+Or in slurm
 ```
-find . -name "*.gz" -print | parallel -q zgrep -e "\(text1\|text2\).*Exception"
+sbatch -J find2 -c 20 --wrap "find . -name \*.gz -print | $HOME/parallel-20190722/usr/local/bin/parallel -q zgrep -e "A00574:80:H7TYWDRXX:2:2101:1108:1000""
 ```
 
 ### Copy files
