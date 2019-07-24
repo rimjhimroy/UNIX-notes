@@ -24,7 +24,7 @@ sudo chmod g+w -R node_modules
 `echo $!`
 
 ### Check memory usage by a user in GB
-`ps hax -o rss,user | grep sandra |awk 'BEGIN {FS = " "} ; {sum+=$1} END {print sum/1000000}'`
+`ps hax -o rss,user | grep user |awk 'BEGIN {FS = " "} ; {sum+=$1} END {print sum/1000000}'`
 
 ### Check memory usage by all users in GB
 `ps hax -o rss,user | awk 'BEGIN {FS = " "} ; {sum+=$1} END {print sum/1000000}'`
