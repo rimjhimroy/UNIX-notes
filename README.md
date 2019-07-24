@@ -45,6 +45,60 @@ sudo mount -t cifs -o username=choudhury //130.92.155.10/EcoGen /media/EcoGen
 ### Change timestamp:
 `find . -exec touch {} \;`
 
+### Install conda
+```
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+./Miniconda3-latest-Linux-x86_64.sh 
+conda config --set auto_activate_base False
+conda update conda
+create latest python2 and 3 environment
+conda create -n py2 python=2
+conda create -n py3 python=3
+```
+
+### Set local lib path to miniconda env, useful for LD_LIBRARY_PATH
+```
+conda activate environment
+cd $CONDA_PREFIX
+mkdir -p ./etc/conda/activate.d
+mkdir -p ./etc/conda/deactivate.d
+touch ./etc/conda/activate.d/env_vars.sh
+touch ./etc/conda/deactivate.d/env_vars.sh
+```
+
+Edit`./etc/conda/activate.d/env_vars.sh`as follows:
+```
+#!/bin/sh
+export MY_KEY='secret-key-value'
+export MY_FILE=/path/to/my/file/
+```
+
+Edit `./etc/conda/deactivate.d/env_vars.sh`as follows:
+```
+#!/bin/sh
+unset MY_KEY
+unset MY_FILE
+```
+For example:
+For $LD_LIBRARY_PATH:
+in activate.d/env_vars.sh
+```
+cat <<EOF > ./etc/conda/activate.d/env_vars.sh
+#!/bin/bash
+export OLD_LD_LIBRARY_PATH=${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}
+EOF
+```
+and then in deactivate.d/env_vars.sh
+```
+cat <<EOF > ./etc/conda/deactivate.d/env_vars.sh
+#!/bin/bash
+export LD_LIBRARY_PATH=${OLD_LD_LIBRARY_PATH}
+unset OLD_LD_LIBRARY_PATH
+EOF
+```
+
 ### Find files
 `find / -name '*libfontconfig1*'`
 Or use locate  
@@ -68,40 +122,6 @@ rsync -avz --stats --safe-links C201SC18110128/C101HW18110129_TR/raw_data/W22* r
 $ md5sum file1.fastq.gz # before
 $ md5sum -c checksums.md5 # after
 md5sum: WARNING: 1 of 3 computed checksums did NOT match
-```
-
-### Install miniconda and set local lib path to miniconda env, useful for LD_LIBRARY_PATH
-```
-cd $CONDA_PREFIX
-mkdir -p ./etc/conda/activate.d
-mkdir -p ./etc/conda/deactivate.d
-touch ./etc/conda/activate.d/env_vars.sh
-touch ./etc/conda/deactivate.d/env_vars.sh
-```
-
-Edit`./etc/conda/activate.d/env_vars.sh`as follows:
-```
-#!/bin/sh
-export MY_KEY='secret-key-value'
-export MY_FILE=/path/to/my/file/
-```
-
-Edit `./etc/conda/deactivate.d/env_vars.sh`as follows:
-```
-#!/bin/sh
-unset MY_KEY
-unset MY_FILE
-```
-For $PATH  and $LD_LIBRARY_PATH:
-in activate.d/env_vars.sh
-```
-    export OLD_LD_LIBRARY_PATH=${LD_LIBRARY_PATH}
-    export LD_LIBRARY_PATH=/your/path:${LD_LIBRARY_PATH}
-```
-and then in deactivate.d/env_vars.sh
-```
-    export LD_LIBRARY_PATH=${OLD_LD_LIBRARY_PATH}
-    unset OLD_LD_LIBRARY_PATH
 ```
 ### Start jupyter notebook with cluster computer
 ```
