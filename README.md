@@ -1,5 +1,5 @@
 ## :memo:Bash advanced
-### When problem entring a folder you own
+### When problem entring a folder your own
 `chmod -R 755 foldername`
 
 ### Add members to a Group
