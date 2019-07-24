@@ -124,6 +124,7 @@ $ md5sum -c checksums.md5 # after
 md5sum: WARNING: 1 of 3 computed checksums did NOT match
 ```
 ### Start jupyter notebook with cluster computer
+READ: https://www2.vrdc.cornell.edu/news/ecco/step-4-using-ecco/running-a-jupyter-notebook-ipython-kernel-on-a-compute-node/  
 ```
 conda create -n withjupyter python=3
 conda activate withjupyter
