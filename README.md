@@ -12,7 +12,10 @@
 `cat /etc/group`
 
 ### Make folders recursively owned by a user and a group
-`sudo chown -R user:group *sudo chmod g+w -R node_modules`
+```
+sudo chown -R user:group *
+sudo chmod g+w -R node_modules
+```
 
 ### Show command using PID
 `ps -o cmd fp PID |less -+S`
