@@ -144,3 +144,8 @@ alias si="sinfo --Node --format \"%N %P %g %C %O %T %E %H %m %e %d %l\""
 alias sq="squeue --format \"%.18i %.9P %.8j %.8u %.2t %.10M %C %m %L %.6D %Q %R\""
 alias sr="srun --pty /bin/bash"
 ```
+
+### Slurm: When will my job execute?  
+scontrol show job jobid  
+look at approximate StartTime
+ 
