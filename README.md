@@ -146,6 +146,6 @@ alias sr="srun --pty /bin/bash"
 ```
 
 ### Slurm: When will my job execute?  
-scontrol show job jobid  
+`scontrol show job jobid`  
 look at approximate StartTime
  
